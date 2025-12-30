@@ -115,7 +115,7 @@ export default function HeroSection({
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 8, repeat: Infinity, linear: true }}
           />
-          <h2 className="relative text-5xl sm:text-7xl font-script text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 mb-6 font-bold drop-shadow-lg">
+          <h2 className="pt-2 relative text-4xl sm:text-6xl font-script text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 mb-4 font-bold drop-shadow-lg">
             {name}
           </h2>
           <motion.div

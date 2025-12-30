@@ -23,6 +23,59 @@ export default function Home() {
     script.src =
       "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js";
     script.async = true;
+
+    script.onload = () => {
+      // Trigger confetti on page load
+      if (typeof window !== "undefined" && window.confetti) {
+        // Main burst
+        window.confetti({
+          particleCount: 150,
+          spread: 90,
+          origin: { y: 0.3 },
+          colors: [
+            "#ff69b4",
+            "#ffd700",
+            "#87ceeb",
+            "#dda0dd",
+            "#ffb6c1",
+            "#ff1493",
+          ],
+        });
+
+        // Second burst from sides
+        setTimeout(() => {
+          if (typeof window !== "undefined" && window.confetti) {
+            window.confetti({
+              particleCount: 100,
+              spread: 180,
+              startVelocity: 30,
+              origin: { x: 0, y: 0.5 },
+              colors: ["#ff69b4", "#87ceeb", "#dda0dd"],
+            });
+            window.confetti({
+              particleCount: 100,
+              spread: 180,
+              startVelocity: 30,
+              origin: { x: 1, y: 0.5 },
+              colors: ["#ffd700", "#ffb6c1", "#ff1493"],
+            });
+          }
+        }, 300);
+
+        // Final burst
+        setTimeout(() => {
+          if (typeof window !== "undefined" && window.confetti) {
+            window.confetti({
+              particleCount: 120,
+              spread: 100,
+              origin: { y: 0.5 },
+              colors: ["#ff69b4", "#ffd700", "#87ceeb", "#dda0dd"],
+            });
+          }
+        }, 600);
+      }
+    };
+
     document.body.appendChild(script);
 
     return () => {
@@ -41,7 +94,7 @@ export default function Home() {
       <div className="relative z-10">
         {/* CUSTOMIZE: Change name and subtitle here */}
         <HeroSection
-          name="Chandana"
+          name="Chandana Sree"
           subtitle="To the person who makes every year brighter ✨"
         />
 
@@ -55,23 +108,25 @@ export default function Home() {
         <MessageSection
           message={`Dear Best Friend,
 
-As I sit down to write this, I'm overwhelmed with gratitude for having you in my life. Today, we celebrate not just another year, but another year of the beautiful journey we've shared together.
+Four years ago (19th May 2022), in a quiet corner of our college library, something unexpected began. Among books, exams, and unspoken dreams, our friendship found its first page. We didn't know then that this simple beginning would turn into one of the most meaningful chapters of my life.
 
-You're the kind of friend who doesn't just exist in my life—you elevate it. Your kindness, your infectious laugh, your unwavering support, and your genuine care have been the most precious gifts. Every moment with you feels special, whether we're having deep conversations until 3 AM or laughing so hard we cry over something silly.
+Our journey hasn't been perfect—and that's what makes it real. We've had arguments, misunderstandings, moments of silence, and times when words failed us. But through every fight, we chose each other again. We learned, we grew, and we became stronger—not because we never broke, but because we always came back.
 
-This past year, you've shown me what true friendship means. You've been my cheerleader, my confidant, and my anchor. The way you love so fiercely, dream so boldly, and live so authentically inspires me every single day.
+You've seen me at my best and stood by me at my worst. You've been my calm in chaos, my strength on weak days, and my comfort when the world felt heavy. Some bonds aren't built on constant happiness—they're built on patience, forgiveness, and trust. Ours is one of those rare bonds.
 
-As you step into this new year, I want you to know that you deserve all the happiness in the world. You deserve to shine brighter than ever, to achieve your wildest dreams, and to be surrounded by people who cherish you as much as I do.
+As you celebrate another year of your life, I want you to know this: you are deeply valued, endlessly important, and truly irreplaceable. The world is brighter with you in it, and my life is better because you're part of it.
 
-Here's to a year filled with magical moments, unexpected adventures, personal growth, and endless reasons to smile. Here's to celebrating YOU—the incredible person you are and all that you're becoming.
+May this birthday bring you peace for everything you've endured, joy for everything you've earned, and hope for everything that's yet to come. May you always remember how strong you are and how deeply you are loved.
 
-Thank you for being the most amazing friend. I love you more than words could ever express.
+Happy Birthday, and Happy New Year too—because you deserve new beginnings just as beautiful as your heart.
 
-Happy Birthday to my soul sister. Let's make this year unforgettable together! 💖
+Here's to us, to our memories, and to many more years of friendship that no misunderstanding could ever break.
 
-Forever yours,
+Always with you. Always grateful. 💙
+
+Forever,
 Your Best Friend`}
-          senderName="With endless love 💕"
+          senderName="Durga Sainath"
         />
 
         {/* Memories section */}

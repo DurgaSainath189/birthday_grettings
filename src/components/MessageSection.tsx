@@ -12,25 +12,8 @@ interface MessageSectionProps {
  * Displays a heartfelt birthday message with elegant animations
  */
 export default function MessageSection({
-  message = `Dear [Friend&apos;s Name],
-
-Four years ago, in a quiet corner of our college library, something unexpected began. Among books, exams, and unspoken dreams, our friendship found its first page. We didn&apos;t know then that this simple beginning would turn into one of the most meaningful chapters of my life.
-
-Our journey hasn&apos;t been perfect—and that&apos;s what makes it real. We&apos;ve had arguments, misunderstandings, moments of silence, and times when words failed us. But through every fight, we chose each other again. We learned, we grew, and we became stronger—not because we never broke, but because we always came back.
-
-You&apos;ve seen me at my best and stood by me at my worst. You&apos;ve been my calm in chaos, my strength on weak days, and my comfort when the world felt heavy. Some bonds aren&apos;t built on constant happiness—they&apos;re built on patience, forgiveness, and trust. Ours is one of those rare bonds.
-
-As you celebrate another year of your life, I want you to know this: you are deeply valued, endlessly important, and truly irreplaceable. The world is brighter with you in it, and my life is better because you&apos;re part of it.
-
-May this birthday bring you peace for everything you&apos;ve endured, joy for everything you&apos;ve earned, and hope for everything that&apos;s yet to come. May you always remember how strong you are and how deeply you are loved.
-
-Happy Birthday, and Happy New Year too—because you deserve new beginnings just as beautiful as your heart.
-
-Here&apos;s to us, to our memories, and to many more years of friendship that no misunderstanding could ever break.
-
-Always with you. Always grateful. 💙
-[Sainath]`,
-  senderName = "Your Best Friend",
+  message = "",
+  senderName = "",
 }: MessageSectionProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -79,7 +62,7 @@ Always with you. Always grateful. 💙
           />
 
           <motion.div
-            className="relative bg-gradient-to-br from-white via-pink-50/30 to-purple-50/30 rounded-3xl shadow-2xl p-8 sm:p-12 border-2 border-gold/50 backdrop-blur-sm group-hover:border-gold transition-colors duration-300"
+            className="relative bg-gradient-to-br from-white via-pink-50/30 to-purple-50/30 rounded-3xl shadow-2xl p-8 sm:p-12 border-2 border-gold/50 backdrop-blur-sm group-hover:border-gold transition-colors duration-300 overflow-hidden"
             whileHover={{
               scale: 1.02,
               boxShadow: "0 30px 60px rgba(217, 119, 6, 0.3)",
@@ -105,7 +88,7 @@ Always with you. Always grateful. 💙
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1, duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="text-gray-700 leading-relaxed font-light text-base sm:text-lg"
+                  className="text-gray-900 leading-relaxed font-medium text-sm sm:text-base whitespace-normal break-words"
                 >
                   {paragraph}
                 </motion.p>
@@ -130,7 +113,7 @@ Always with you. Always grateful. 💙
               </div>
             </motion.div>
 
-            {/* Decorative side elements */}
+            {/* Decorative side elements
             <div className="absolute -left-8 top-1/4 text-4xl animate-float">
               🌸
             </div>
@@ -139,7 +122,7 @@ Always with you. Always grateful. 💙
               style={{ animationDelay: "1s" }}
             >
               🌷
-            </div>
+            </div> */}
           </motion.div>
         </motion.div>
 
@@ -164,7 +147,7 @@ Always with you. Always grateful. 💙
                 ease: "easeInOut",
               }}
             >
-              {["🌹", "🌸", "🌺", "🌻", "💐", "🌷"][i % 6]}
+              {["🎀", "🌸", "🌺", "✨"][i % 6]}
             </motion.div>
           ))}
         </div>

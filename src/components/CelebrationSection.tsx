@@ -163,7 +163,7 @@ export default function CelebrationSection() {
                 delay: i * 0.1,
               }}
             >
-              {["🎉", "🎊", "🎈", "🎁", "🎀", "✨", "🌟", "💫"][i % 8]}
+              {[ "🎁", "🎀", "✨", "🌟", "💫"][i % 20]}
             </motion.div>
           ))}
         </div>

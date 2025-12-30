@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 interface FinalWishSectionProps {
   mainMessage?: string;
@@ -13,8 +14,15 @@ interface FinalWishSectionProps {
  */
 export default function FinalWishSection({
   mainMessage = "May This Year Bring You Endless Happiness",
-  closeMessage = "You deserve all the magic, joy, and love the world has to offer. Here&apos;s to making every single day as special as you are. 💖",
+  closeMessage = "You deserve all the magic, joy, and love the world has to offer. Here's to making every single day as special as you are. 💖",
 }: FinalWishSectionProps) {
+  const [balloonReleased, setBalloonReleased] = useState(false);
+
+  const handleReleaseBalloons = () => {
+    setBalloonReleased(true);
+    // Reset after animation
+    setTimeout(() => setBalloonReleased(false), 4000);
+  };
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -136,71 +144,108 @@ export default function FinalWishSection({
             transition={{ duration: 0.3 }}
           >
             <p className="text-sm sm:text-base font-semibold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600 uppercase tracking-widest">
-              With All My Love 💌
+              With All My Respect 💌
             </p>
           </motion.div>
         </motion.div>
 
-        {/* Floating elements */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {Array.from({ length: 20 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute text-4xl sm:text-5xl drop-shadow-lg"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -60, 0],
-                x: [0, Math.random() * 40 - 20, 0],
-                opacity: [0.2, 0.9, 0.2],
-                scale: [1, 1.4, 1],
-                rotate: [0, 360, 0],
-              }}
-              transition={{
-                duration: 7 + Math.random() * 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.12,
-              }}
+        {/* Balloons Section */}
+        <motion.div
+          variants={textVariants}
+          className="mb-16 relative flex items-start justify-between gap-8 sm:gap-12"
+        >
+          {/* Left: Release Button */}
+          <div className="flex flex-col items-start justify-start pt-8">
+            <p className="text-gray-600 text-base sm:text-lg font-medium mb-6">
+              Release the past, embrace the calm! 🎈
+            </p>
+            <motion.button
+              onClick={handleReleaseBalloons}
+              whileHover={{ scale: 1.08, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 text-white font-bold rounded-full shadow-lg hover:shadow-2xl transition-shadow duration-300 text-sm sm:text-base whitespace-nowrap"
+              disabled={balloonReleased}
             >
-              {
-                [
-                  "✨",
-                  "💝",
-                  "🌹",
-                  "🎀",
-                  "💫",
-                  "🌷",
-                  "💖",
-                  "🌺",
-                  "🎊",
-                  "💐",
-                  "🌟",
-                  "🦋",
-                  "🌼",
-                  "💕",
-                  "🎆",
-                  "🎁",
-                  "🎉",
-                  "💞",
-                  "🌸",
-                  "⭐",
-                ][i]
-              }
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+              🎈 Release! 🎈
+            </motion.button>
+          </div>
 
-      {/* Bottom scroll hint */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <p className="text-gray-600 text-sm">~ End of Wish ~</p>
+          {/* Right: Balloon Bunch */}
+          <div className="relative h-96 sm:h-screen flex-1 flex justify-end items-end">
+            {[
+              { color: "#ff69b4", offsetX: 0, offsetY: 0 },
+              { color: "#ffd700", offsetX: 18, offsetY: 12 },
+              { color: "#87ceeb", offsetX: 36, offsetY: 24 },
+              { color: "#dda0dd", offsetX: -18, offsetY: 12 },
+              { color: "#ffb6c1", offsetX: -36, offsetY: 24 },
+              { color: "#ff6b6b", offsetX: 9, offsetY: 36 },
+              { color: "#4ecdc4", offsetX: -9, offsetY: 36 },
+              { color: "#ffe66d", offsetX: 0, offsetY: 48 },
+              { color: "#ff1493", offsetX: 27, offsetY: 40 },
+              { color: "#20b2aa", offsetX: -27, offsetY: 40 },
+              { color: "#ffa500", offsetX: 14, offsetY: 60 },
+              { color: "#ff69b4", offsetX: -14, offsetY: 60 },
+              { color: "#32cd32", offsetX: 5, offsetY: 72 },
+            ].map((balloon, idx) => {
+              // Generate random scatter values per balloon
+              const randomX = (Math.random() - 0.5) * 250;
+              const randomY = -window.innerHeight;
+              const randomRotation = Math.random() * 360;
+
+              return (
+                <motion.div
+                  key={idx}
+                  className="absolute w-14 h-20 sm:w-20 sm:h-32 cursor-pointer"
+                  style={{
+                    right: `${balloon.offsetX}px`,
+                    bottom: `${balloon.offsetY}px`,
+                  }}
+                  animate={
+                    balloonReleased
+                      ? {
+                          y: -800,
+                          x: randomX,
+                          opacity: [1, 1, 0],
+                          rotate: randomRotation,
+                        }
+                      : { y: 0, x: 0, rotate: 0 }
+                  }
+                  transition={{
+                    duration: 3.5 + Math.random() * 0.5,
+                    ease: "easeInOut",
+                    delay: idx * 0.05,
+                  }}
+                >
+                  {/* Balloon Body */}
+                  <motion.div
+                    className="w-full h-14 sm:h-24 rounded-full relative shadow-lg hover:shadow-xl transition-shadow"
+                    style={{ backgroundColor: balloon.color }}
+                    whileHover={{ scale: 1.2 }}
+                    animate={
+                      !balloonReleased
+                        ? { y: [0, -8, 0], scale: [1, 1.08, 1] }
+                        : {}
+                    }
+                    transition={{
+                      duration: 2.5 + idx * 0.1,
+                      repeat: !balloonReleased ? Infinity : 0,
+                      delay: idx * 0.1,
+                    }}
+                  >
+                    {/* Shine Effect */}
+                    <motion.div className="absolute top-3 left-3 w-3 h-3 sm:w-4 sm:h-4 bg-white rounded-full opacity-80" />
+                  </motion.div>
+
+                  {/* Balloon String */}
+                  <div
+                    className="w-0.5 h-8 sm:h-14 mx-auto"
+                    style={{ backgroundColor: balloon.color, opacity: 0.5 }}
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );
