@@ -189,7 +189,6 @@ export default function FinalWishSection({
             ].map((balloon, idx) => {
               // Generate random scatter values per balloon
               const randomX = (Math.random() - 0.5) * 250;
-              const randomY = -window.innerHeight;
               const randomRotation = Math.random() * 360;
 
               return (
