@@ -48,7 +48,6 @@ export default function AgeCounter() {
       const totalMinutes = Math.floor(totalSeconds / 60);
       const totalHours = Math.floor(totalMinutes / 60);
       const totalDays = Math.floor(totalHours / 24);
-      const totalWeeks = Math.floor(totalDays / 7);
 
       const hours = Math.floor((totalSeconds % 86400) / 3600);
       const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -71,17 +70,6 @@ export default function AgeCounter() {
 
     return () => clearInterval(interval);
   }, []);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
