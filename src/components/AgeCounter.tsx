@@ -246,7 +246,7 @@ export default function AgeCounter() {
             whileHover={{ scale: 1.05 }}
           >
             <p className="text-lg sm:text-xl font-semibold text-gray-800">
-              You've lived for
+              You&apos;ve lived for
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600 mx-2">
                 {ageData.totalDays.toLocaleString()}
               </span>
