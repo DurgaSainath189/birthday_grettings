@@ -12,24 +12,24 @@ interface MessageSectionProps {
  * Displays a heartfelt birthday message with elegant animations
  */
 export default function MessageSection({
-  message = `Dear [Friend's Name],
+  message = `Dear [Friend&apos;s Name],
 
-As I sit down to write this, I'm overwhelmed with gratitude for having you in my life. Today, we celebrate not just another year, but another year of the beautiful journey we've shared together.
+Four years ago, in a quiet corner of our college library, something unexpected began. Among books, exams, and unspoken dreams, our friendship found its first page. We didn&apos;t know then that this simple beginning would turn into one of the most meaningful chapters of my life.
 
-You're the kind of friend who doesn't just exist in my life—you elevate it. Your kindness, your infectious laugh, your unwavering support, and your genuine care have been the most precious gifts. Every moment with you feels special, whether we're having deep conversations until 3 AM or laughing so hard we cry over something silly.
+Our journey hasn&apos;t been perfect—and that&apos;s what makes it real. We&apos;ve had arguments, misunderstandings, moments of silence, and times when words failed us. But through every fight, we chose each other again. We learned, we grew, and we became stronger—not because we never broke, but because we always came back.
 
-This past year, you've shown me what true friendship means. You've been my cheerleader, my confidant, and my anchor. The way you love so fiercely, dream so boldly, and live so authentically inspires me every single day.
+You&apos;ve seen me at my best and stood by me at my worst. You&apos;ve been my calm in chaos, my strength on weak days, and my comfort when the world felt heavy. Some bonds aren&apos;t built on constant happiness—they&apos;re built on patience, forgiveness, and trust. Ours is one of those rare bonds.
 
-As you step into this new year, I want you to know that you deserve all the happiness in the world. You deserve to shine brighter than ever, to achieve your wildest dreams, and to be surrounded by people who cherish you as much as I do.
+As you celebrate another year of your life, I want you to know this: you are deeply valued, endlessly important, and truly irreplaceable. The world is brighter with you in it, and my life is better because you&apos;re part of it.
 
-Here's to a year filled with magical moments, unexpected adventures, personal growth, and endless reasons to smile. Here's to celebrating YOU—the incredible person you are and all that you're becoming.
+May this birthday bring you peace for everything you&apos;ve endured, joy for everything you&apos;ve earned, and hope for everything that&apos;s yet to come. May you always remember how strong you are and how deeply you are loved.
 
-Thank you for being the most amazing friend. I love you more than words could ever express.
+Happy Birthday, and Happy New Year too—because you deserve new beginnings just as beautiful as your heart.
 
-Happy Birthday to my soul sister. Let's make this year unforgettable together! 💖
+Here&apos;s to us, to our memories, and to many more years of friendship that no misunderstanding could ever break.
 
-Forever yours,
-[Your Name]`,
+Always with you. Always grateful. 💙
+[Sainath]`,
   senderName = "Your Best Friend",
 }: MessageSectionProps) {
   const containerVariants = {
@@ -66,9 +66,9 @@ Forever yours,
           {/* Dual glowing background with animation */}
           <motion.div
             className="absolute -inset-6 bg-gradient-to-br from-rose-300/50 via-pink-300/40 to-purple-300/50 rounded-3xl blur-3xl"
-            animate={{ 
+            animate={{
               opacity: [0.4, 0.8, 0.4],
-              scale: [1, 1.05, 1]
+              scale: [1, 1.05, 1],
             }}
             transition={{ duration: 4, repeat: Infinity }}
           />
@@ -78,9 +78,12 @@ Forever yours,
             transition={{ duration: 12, repeat: Infinity, linear: true }}
           />
 
-          <motion.div 
+          <motion.div
             className="relative bg-gradient-to-br from-white via-pink-50/30 to-purple-50/30 rounded-3xl shadow-2xl p-8 sm:p-12 border-2 border-gold/50 backdrop-blur-sm group-hover:border-gold transition-colors duration-300"
-            whileHover={{ scale: 1.02, boxShadow: "0 30px 60px rgba(217, 119, 6, 0.3)" }}
+            whileHover={{
+              scale: 1.02,
+              boxShadow: "0 30px 60px rgba(217, 119, 6, 0.3)",
+            }}
           >
             {/* Decorative top element */}
             <div className="flex justify-center mb-8">

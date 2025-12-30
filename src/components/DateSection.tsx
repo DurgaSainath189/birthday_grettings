@@ -80,12 +80,26 @@ export default function DateSection() {
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              whileHover={{ y: -10, scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="bg-gradient-to-br from-white to-pink-50 p-6 rounded-2xl border border-pink-200 shadow-lg hover:shadow-2xl transition-shadow"
+              whileHover={{ y: -15, scale: 1.08 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              className="group relative bg-gradient-to-br from-white via-pink-50 to-purple-50 p-8 rounded-2xl border-2 border-pink-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:border-pink-400 cursor-pointer"
             >
-              <p className="text-4xl mb-3">{item.emoji}</p>
-              <p className="text-gray-700 font-medium">{item.text}</p>
+              <motion.div className="absolute inset-0 bg-gradient-to-r from-rose-200 via-pink-200 to-purple-200 opacity-0 group-hover:opacity-20 rounded-2xl transition-opacity duration-300" />
+              <motion.p
+                className="text-5xl mb-4 relative z-10"
+                animate={{ scale: [1, 1.1, 1], rotate: [0, 10, 0] }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  delay: idx * 0.2,
+                }}
+              >
+                {item.emoji}
+              </motion.p>
+              <p className="text-gray-700 font-semibold text-lg relative z-10">
+                {item.text}
+              </p>
             </motion.div>
           ))}
         </motion.div>

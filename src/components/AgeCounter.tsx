@@ -92,35 +92,53 @@ export default function AgeCounter() {
     },
   };
 
-  const Counter = ({ value, label }: { value: number; label: string }) => (
+  const Counter = ({
+    value,
+    label,
+    isPulse = false,
+  }: {
+    value: number;
+    label: string;
+    isPulse?: boolean;
+  }) => (
     <motion.div
       variants={itemVariants}
-      className="relative group"
-      whileHover={{ scale: 1.1 }}
+      className="relative group h-full"
+      whileHover={{ scale: 1.08 }}
     >
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-rose-400 to-pink-400 rounded-2xl blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-300"
-        animate={{ scale: [1, 1.1, 1] }}
-        transition={{ duration: 3, repeat: Infinity, delay: Math.random() }}
+        className="absolute inset-0 bg-gradient-to-r from-rose-400 via-pink-400 to-purple-400 rounded-2xl blur-xl opacity-0 group-hover:opacity-80 transition-all duration-500"
+        animate={isPulse ? { scale: [1, 1.15, 1] } : {}}
+        transition={
+          isPulse
+            ? { duration: 3, repeat: Infinity, delay: Math.random() }
+            : undefined
+        }
       />
-      <div className="relative bg-gradient-to-br from-white via-pink-50 to-white p-6 rounded-2xl border-2 border-pink-300/50 backdrop-blur-sm shadow-lg">
+      <div className="relative h-full bg-gradient-to-br from-white via-pink-50/60 to-white p-8 rounded-2xl border-2 border-pink-300/70 backdrop-blur-md shadow-xl hover:shadow-2xl group-hover:border-pink-500 transition-all duration-300">
         <motion.div
-          className="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 mb-3 leading-none"
+          className="text-5xl sm:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 mb-4 leading-none"
           key={`${label}-${value}`}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          animate={isPulse ? { scale: [1, 1.05, 1] } : { scale: 1 }}
+          transition={
+            isPulse
+              ? { duration: 1.5, repeat: Infinity }
+              : {
+                  duration: 0.3,
+                  ease: "easeOut",
+                }
+          }
         >
           {String(value).padStart(2, "0")}
         </motion.div>
-        <p className="text-sm sm:text-base font-semibold text-gray-700 uppercase tracking-wider">
+        <p className="text-sm sm:text-base font-bold text-gray-700 uppercase tracking-wider letter-spacing-1">
           {label}
         </p>
         <motion.div
-          className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 rounded-b-2xl"
-          initial={{ width: 0 }}
-          animate={{ width: "100%" }}
-          transition={{ duration: 0.8, delay: 0.1 }}
+          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 rounded-b-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         />
       </div>
     </motion.div>
@@ -212,7 +230,7 @@ export default function AgeCounter() {
           <Counter value={ageData.days} label="Days" />
           <Counter value={ageData.hours} label="Hours" />
           <Counter value={ageData.minutes} label="Minutes" />
-          <Counter value={ageData.seconds} label="Seconds" />
+          <Counter value={ageData.seconds} label="Seconds" isPulse={true} />
           <Counter value={ageData.totalDays} label="Total Days" />
         </motion.div>
 
@@ -242,7 +260,7 @@ export default function AgeCounter() {
             transition={{ delay: 0.1 }}
           >
             <p className="text-lg sm:text-xl font-semibold text-gray-800">
-              That's
+              That&apos;s
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-pink-600 mx-2">
                 {Math.floor(ageData.totalDays * 24).toLocaleString()}
               </span>

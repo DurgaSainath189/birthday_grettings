@@ -19,7 +19,7 @@ export default function MemoriesSection({
   memories = [
     {
       emoji: "😂",
-      quote: "That one time we laughed so hard we couldn't breathe",
+      quote: "That one time we laughed so hard we couldn&apos;t breathe",
     },
     { emoji: "🌙", quote: "Late night talks that lasted until sunrise" },
     { emoji: "🎭", quote: "Adventures we never planned but will never forget" },
@@ -122,11 +122,12 @@ export default function MemoriesSection({
                     {memory.quote}
                   </p>
 
-                  {/* Bottom accent line - animated */}
+                  {/* Bottom accent line - static */}
                   <motion.div
-                    className="mt-6 h-1.5 bg-gradient-to-r from-rose-400 via-gold to-pink-400 rounded-full"
-                    animate={{ width: ["3rem", "4rem", "3rem"] }}
-                    transition={{ duration: 2.5, repeat: Infinity }}
+                    className="mt-6 h-1 bg-gradient-to-r from-rose-400 via-gold to-pink-400 rounded-full"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
                   />
                 </div>
 

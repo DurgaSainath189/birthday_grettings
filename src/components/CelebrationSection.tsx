@@ -77,7 +77,7 @@ export default function CelebrationSection() {
           className="text-4xl sm:text-6xl font-display font-bold mb-6"
         >
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500">
-            It's Time to Celebrate!
+            It&apos;s Time to Celebrate!
           </span>
         </motion.h2>
 
@@ -86,8 +86,8 @@ export default function CelebrationSection() {
           variants={itemVariants}
           className="text-lg sm:text-xl text-gray-700 mb-12 leading-relaxed"
         >
-          This special day deserves all the joy and celebration. Let's make it
-          unforgettable with a burst of happiness!
+          This special day deserves all the joy and celebration. Let&apos;s make
+          it unforgettable with a burst of happiness!
         </motion.p>
 
         {/* Celebration button */}
@@ -101,29 +101,33 @@ export default function CelebrationSection() {
 
           <motion.button
             onClick={handleCelebrate}
-            whileHover={{ scale: 1.15 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative px-10 py-6 text-xl font-semibold text-white rounded-full overflow-hidden group"
+            whileHover={{ scale: 1.12, y: -3 }}
+            whileTap={{ scale: 0.92 }}
+            className="relative px-12 py-6 text-lg font-bold text-white rounded-full overflow-hidden group shadow-xl hover:shadow-2xl transition-all duration-300"
           >
             {/* Animated background */}
             <div className="absolute inset-0 bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 group-hover:from-rose-600 group-hover:via-pink-600 group-hover:to-purple-600 transition-all duration-300" />
 
             {/* Shimmer effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 group-hover:animate-shimmer" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-40 animate-pulse" />
 
-            {/* Button text */}
-            <span className="relative z-10 flex items-center gap-2">
+            {/* Button text with animation */}
+            <span className="relative z-10 flex items-center gap-3">
               <motion.span
-                animate={{ scale: celebrate ? [1, 1.2, 1] : 1 }}
-                transition={{ duration: 0.5 }}
+                animate={{
+                  scale: celebrate ? [1, 1.3, 1] : [1, 1.1, 1],
+                  rotate: celebrate ? [0, 360, 360] : 0,
+                }}
+                transition={{
+                  duration: 0.6,
+                  repeat: celebrate ? 0 : Infinity,
+                  repeatType: celebrate ? "loop" : undefined,
+                }}
               >
                 🎉
               </motion.span>
-              <span>Celebrate</span>
+              <span>Celebrate Now!</span>
             </span>
-
-            {/* Shadow */}
-            <div className="absolute inset-0 shadow-lg group-hover:shadow-2xl transition-shadow duration-300 rounded-full" />
           </motion.button>
         </motion.div>
 

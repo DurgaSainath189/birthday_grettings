@@ -65,7 +65,6 @@ export default function HeroSection({
           <motion.span
             className="text-6xl sm:text-8xl inline-block relative z-10"
             animate={{
-              bounce: 1,
               scale: [1, 1.2, 1],
               rotate: [0, 10, -10, 0],
             }}
@@ -112,15 +111,15 @@ export default function HeroSection({
             transition={{ duration: 3, repeat: Infinity }}
           />
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-rose-300 to-pink-300 rounded-full blur-xl opacity-30"
+            className="absolute inset-0 bg-gradient-to-r from-rose-300 to-pink-300 rounded-full blur-2xl opacity-30"
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 8, repeat: Infinity, linear: true }}
           />
-          <h2 className="relative text-4xl sm:text-6xl font-script text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 mb-4 font-bold drop-shadow-lg">
+          <h2 className="relative text-5xl sm:text-7xl font-script text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-purple-500 mb-6 font-bold drop-shadow-lg">
             {name}
           </h2>
           <motion.div
-            className="h-1.5 w-32 sm:w-40 bg-gradient-to-r from-rose-400 via-gold to-pink-400 mx-auto rounded-full shadow-lg"
+            className="h-2 w-32 sm:w-40 bg-gradient-to-r from-rose-400 via-gold to-pink-400 mx-auto rounded-full shadow-xl"
             animate={{
               width: ["8rem", "10rem", "8rem"],
               boxShadow: [

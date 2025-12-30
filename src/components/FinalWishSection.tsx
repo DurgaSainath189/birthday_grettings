@@ -13,7 +13,7 @@ interface FinalWishSectionProps {
  */
 export default function FinalWishSection({
   mainMessage = "May This Year Bring You Endless Happiness",
-  closeMessage = "You deserve all the magic, joy, and love the world has to offer. Here's to making every single day as special as you are. 💖",
+  closeMessage = "You deserve all the magic, joy, and love the world has to offer. Here&apos;s to making every single day as special as you are. 💖",
 }: FinalWishSectionProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -143,26 +143,26 @@ export default function FinalWishSection({
 
         {/* Floating elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {Array.from({ length: 15 }).map((_, i) => (
+          {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
               key={i}
-              className="absolute text-3xl sm:text-4xl"
+              className="absolute text-4xl sm:text-5xl drop-shadow-lg"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
               animate={{
-                y: [0, -40, 0],
-                x: [0, Math.random() * 30 - 15, 0],
-                opacity: [0.2, 0.7, 0.2],
-                scale: [1, 1.3, 1],
+                y: [0, -60, 0],
+                x: [0, Math.random() * 40 - 20, 0],
+                opacity: [0.2, 0.9, 0.2],
+                scale: [1, 1.4, 1],
                 rotate: [0, 360, 0],
               }}
               transition={{
-                duration: 6 + Math.random() * 4,
+                duration: 7 + Math.random() * 5,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: i * 0.15,
+                delay: i * 0.12,
               }}
             >
               {
@@ -182,6 +182,11 @@ export default function FinalWishSection({
                   "🌼",
                   "💕",
                   "🎆",
+                  "🎁",
+                  "🎉",
+                  "💞",
+                  "🌸",
+                  "⭐",
                 ][i]
               }
             </motion.div>
